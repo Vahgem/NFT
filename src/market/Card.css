@@ -1,0 +1,56 @@
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px;
+  padding: 40px;
+}
+
+.cards_items {
+  flex: 20%;
+  padding: 8px;
+  margin: 10px;
+  background-color: #111;
+  max-width: 200px;
+  max-height: 400px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+.cards_items:hover {
+  box-shadow: 5px 10px #888888;
+  transform: rotate(-2deg);
+}
+.react-tabs__tab--selected {
+  background: #ff0088;
+  border-color: #aaa;
+  color: white;
+  border-radius: 12px 12px 0 0;
+}
+
+.desc {
+  display: flex;
+}
+.titles {
+  flex: 60%;
+  color: #ccc;
+  text-align: left;
+}
+.price {
+  flex: 40%;
+  color: #ddd;
+  text-align: right;
+}
+.name {
+  font-size: 15px;
+}
+.code {
+  font-size: 12px;
+}
+.pn {
+  font-size: 15px;
+}
+.pval {
+  font-size: 10px;
+}
+.cards_items img {
+  margin: 10px 0;
+}
