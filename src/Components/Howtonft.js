@@ -2,7 +2,8 @@ import React from 'react';
 import './howto.css';
 export default function Howtonft() {
     return (
-        <section id="Howto" style={{ backgroundColor: 'yellow', padding: "20px" }}>
+        <section id="Howto" className="HowtoAll" style={{ backgroundColor: 'yellow', padding: "20px", paddingTop: "120px" }}>
+            
             <h1 style={{ textAlign: 'center' }}>Create and sell your NFT</h1>
             <br />
             

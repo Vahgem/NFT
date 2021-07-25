@@ -6,6 +6,7 @@ export default function App() {
   return (
     <Router>
       <Route path="/" exact component={Homepage} />
+      <Route path="/homepage" exact component={Homepage} />
       <Route path="/market" exact component={Market} />
     </Router>
   );

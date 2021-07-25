@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import Fade from "react-reveal";
-
+import kit from "./kit1.png";
 class About extends Component {
   render() {
 
     //const name = this.props.data.name;
-    const profilepic = "images/";
     const bio = "We are a young company who wants to promote and build a platform to encourge the trade of NFTs of cricket and films. We recognise that these two things are really important and we would love to own these moments. And since these moments will have limited copies they become rather valuable.";
     const street = "MLK street";
     const city = "Houston";
@@ -22,7 +21,7 @@ class About extends Component {
             <div className="three columns">
               <img
                 className="profile-pic"
-                src={profilepic}
+                src={kit}
                 alt="Nordic Giant Profile Pic"
               />
             </div>
@@ -30,8 +29,7 @@ class About extends Component {
               <h2>About Us</h2>
 
               <p>{bio}</p>
-              <div className="row">
-                <div className="columns contact-details">
+                <div className="columns contact-details" style={{marginLeft:"13em"}}>
                   <h2>Contact Details</h2>
                   <p className="address">
                     <span>BirthVenue</span>
@@ -48,7 +46,6 @@ class About extends Component {
                   </p>
                 </div>
               </div>
-            </div>
           </div>
         </Fade>
       </section>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Card.css";
 import axios from "axios";
 import Card from "./Card";
+import "./Marketplace.css";
 export default function Marketplace() {
   const [market, SetMarket] = useState(null);
 

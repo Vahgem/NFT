@@ -1,0 +1,4 @@
+.nftcardgroup {
+  display: flex;
+  flex-wrap: wrap;
+}
