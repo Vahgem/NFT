@@ -51,7 +51,7 @@ const Mynftcard = ({ nft }) => {
     <div>
       <div className="cards_items">
         <embed type="image/jpg" src={nft.image_url} alt={nft.name} style={{objectFit: "contain",overflow:"hidden",width: "100%",
-height: "250px"}}/>
+height: "150px"}}/>
         <div className="desc">
           <div className="titles">
             <div className="name">{nft.name}</div>
@@ -68,9 +68,9 @@ height: "250px"}}/>
             </div> */}
         </div>
         <br />
-        <Popup trigger={<button className="button"> Sell</button>} modal>
+        <Popup trigger={<button className="button" style={{borderRadius:"10px",marginLeft:"4em"}}> Sell</button>} modal>
         <form style={{
-  backgroundColor:"antiquewhite",padding: "15px"
+  backgroundColor:"antiquewhite",padding: "15px", border:"2px solid #333",
 }}
           >
              <label>Price</label> 

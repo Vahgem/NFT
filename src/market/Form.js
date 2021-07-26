@@ -45,8 +45,8 @@ const Form = () => {
   };
 
   return (
-    <div className="Form">
-      <form>
+    <div >
+      <form className="Form">
         <label>NFT Name</label>
         <input
           type="name"

@@ -25,6 +25,7 @@ export default function Marketplace() {
   }, []);
   return (
     <div className="cards">
+      
       {market && market.map((nft) => <Card key={nft.id} nft={nft} />)}
     </div>
   );

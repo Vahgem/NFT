@@ -53,14 +53,14 @@ const Card = ({ nft }) => {
 
           <div className="price">
             <div className="pn">Price</div>
-            <div className="pval">
+            <div className="pval">$
               {nft.sell_orders &&
                 parseInt(nft.sell_orders[0].base_price, 10) / Math.pow(10, 18)}
             </div>
           </div>
         </div>
         <br />
-        <input type="button" value="Purchase" onClick={Purchase} />
+        <input type="button" value="Purchase" style={{borderRadius:"10px",marginLeft:"2.2em"}} onClick={Purchase} />
       </div>
     </div>
   );
