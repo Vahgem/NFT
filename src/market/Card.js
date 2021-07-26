@@ -44,7 +44,7 @@ const Card = ({ nft }) => {
   return (
     <div>
       <div className="cards_items">
-        <embed src={nft.image_url} />
+        <embed src={nft.image_url} style={{ width:"200px", height:"auto" }} />
         <div className="desc">
           <div className="titles">
             <div className="name">{nft.name}</div>

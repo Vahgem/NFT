@@ -10,9 +10,8 @@
   padding: 8px;
   margin: 10px;
   background-color: #111;
-  max-width: 200px;
-  max-height: 400px;
-  overflow: hidden;
+  width: 220px;
+  max-height: auto;
   border-radius: 10px;
 }
 .cards_items:hover {
@@ -50,7 +49,4 @@
 }
 .pval {
   font-size: 10px;
-}
-.cards_items img {
-  margin: 10px 0;
 }

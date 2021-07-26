@@ -4,6 +4,9 @@ import Fade from "react-reveal";
 import web3 from "../Ethereum/web3";
 import { connect } from "react-redux";
 import { setcurrentuser } from "../redux/user/user-actions";
+import { useAlert } from "react-alert";
+
+
 
 const project = "./market";
 const github = "https://github.com/Vahgem/Homepage";
@@ -13,20 +16,21 @@ const description =
 
 const Header = ({ setcurrentuser, accountAddress }) => {
   const [curr, setCurr] = useState("home");
-
+  const alert = useAlert();
   const SetWalletAddress = async () => {
     if (window.ethereum) {
       await window.ethereum.enable();
+      setCurr("connect");
     }
 
     const accounts = await web3.eth.getAccounts();
     const ethId = await web3.eth.net.getId();
     if (ethId !== 4) {
-      alert("Select Rinkeby Network");
+      alert.show("Select Rinkeby Network");
     } else if (accounts[0] !== accountAddress) {
-      setcurrentuser({ accountAddress: accounts[0], ethId });
-      alert("Wallet Connected");
-    }
+      setcurrentuser({ accountAddress: accounts[0], ethId }); 
+      alert.success("Wallet Connected");
+     }
     console.log(accounts, ethId);
   };
   // useEffect(() => {
@@ -34,7 +38,7 @@ const Header = ({ setcurrentuser, accountAddress }) => {
   // }, []);
   return (
     <header id="home">
-      <ParticlesBg type="circle" bg={true} />
+      <ParticlesBg type="circle" bg={true}  />
 
       <nav
         id="nav-wrap"
@@ -87,7 +91,7 @@ const Header = ({ setcurrentuser, accountAddress }) => {
               FAQs
             </a>
           </li>
-          <li className={curr === "faq" ? "current" : "nonactive"}>
+          <li className={curr === "connect" ? "current" : "nonactive"}>
             <a
               className="smoothscroll"
               href="/#"

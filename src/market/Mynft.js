@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import Mynftcard from "./Mynftcard";
+import { useAlert } from "react-alert";
 const Mynft = ({ accountAddress }) => {
   const [mynft, Setmynft] = useState([]);
+  const alert = useAlert();
   const getNft = async () => {
     console.log(accountAddress);
     if (accountAddress === "") {
-      alert("No wallet connected");
+      alert.error("No wallet connected");
     } else {
       try {
         const response = await axios.get(
@@ -25,7 +27,7 @@ const Mynft = ({ accountAddress }) => {
     getNft(); //eslint-disable-next-line
   }, []);
   return (
-    <div>
+    <div className="nftcardgroup">
       {mynft && mynft.map((nft) => <Mynftcard key={nft.id} nft={nft} />)}
     </div>
   );

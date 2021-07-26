@@ -1,9 +1,9 @@
-import React from "react";
+import React,{useState} from "react";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import Web3 from "web3";
 import "./Card.css";
+import Popup from "reactjs-popup";
 const opensea = require("opensea-js");
-
 const provider = new WalletConnectProvider({
   infuraId: "3610b5ef9a864d4dbd6ec3fc0e186935",
 });
@@ -13,11 +13,12 @@ const Network = opensea.Network;
 const seaport = new OpenSeaPort(provider, {
   networkName: Network.Rinkeby,
 });
+
 const Mynftcard = ({ nft }) => {
   console.log(nft);
   const Sell = async () => {
-    //Modal
-
+    
+    
     console.log("sell");
     try {
       await provider.enable();
@@ -43,10 +44,14 @@ const Mynftcard = ({ nft }) => {
       if (e.message !== "User closed modal") alert(e.message);
     }
   };
+  
+  const [days, setDays] = useState("0");
+    const [price, setPrice] = useState("0.00");
   return (
     <div>
       <div className="cards_items">
-        <embed src={nft.image_url} />
+        <embed type="image/jpg" src={nft.image_url} alt={nft.name} style={{objectFit: "contain",overflow:"hidden",width: "100%",
+height: "250px"}}/>
         <div className="desc">
           <div className="titles">
             <div className="name">{nft.name}</div>
@@ -63,7 +68,19 @@ const Mynftcard = ({ nft }) => {
             </div> */}
         </div>
         <br />
-        <input type="button" value="Sell" onClick={Sell} />
+        <Popup trigger={<button className="button"> Sell</button>} modal>
+        <form style={{
+  backgroundColor:"antiquewhite",padding: "15px"
+}}
+          >
+             <label>Price</label> 
+            <input type="number" value={price} onChange={(e)=>setPrice(e.value)} required />
+            <label>Duration of selling period</label> 
+            <input type="number" value={days} onChange={(e) => setDays(e.value)} required />
+            <br/>
+            <input type="submit" onClick={()=>Sell}/>
+    </form>    )
+  </Popup>
       </div>
     </div>
   );

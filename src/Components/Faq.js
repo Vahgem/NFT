@@ -18,23 +18,23 @@ const data = {
         },
         {
             title: "How to trade NFTs ?",
-            content: `To trade NFTs one must have a Crypto Wallet for the execution of such transactions.
-            Currently only Metamask is supported.
-            One must have a Chrome extension as well as a mobile equivalent of Metamask. `,
+            content:  <p style={{textAlign:"left"}}>To trade NFTs one must have a Crypto Wallet for the execution of such transactions.<br/>
+            Currently only Metamask is supported.<br/>
+            One must have a Chrome extension as well as a mobile equivalent of Metamask. </p>,
         },
         {
             title: "How to install Metamask Chrome Extension ? ",
-            content: `Go to MetaMask.io and select from Android or iOS for mobile application and select Chrome for desktop.
-            You can also go directly to the Chrome store, Google Play store, or Apple App Store (soon). `,
+            content: <p style={{textAlign:"left"}}> Go to MetaMask.io and select from Android or iOS for mobile application and select Chrome for desktop.<br/>
+            You can also go directly to the Chrome store, Google Play store, or Apple App Store (soon). </p>,
         },
         {
             title: "How to use same Chrome extension account within Metamask Mobile App ?",
-            content: `You can sync your MetaMask extension wallet with mobile by using the MetaMask Mobile Sync feature.
-            1.Install MetaMask mobile at MetaMask.io.
-            2.Open the MetaMask mobile app and select ‘Sync or Import’ > ‘Scan QR code’.
-            3.Log into your MetaMask extension
-            4.Click Settings > Advanced > Sync with Mobile. You’ll see a QR code.
-            5.Scan this QR code with your MetaMask mobile app.`,
+            content: <p style={{textAlign:"left"}}> You can sync your MetaMask extension wallet with mobile by using the MetaMask Mobile Sync feature.<br/>
+            1.Install MetaMask mobile at MetaMask.io.<br/>
+            2.Open the MetaMask mobile app and select ‘Sync or Import’ > ‘Scan QR code’.<br/>
+            3.Log into your MetaMask extension<br/>
+            4.Click Settings > Advanced > Sync with Mobile. You’ll see a QR code.<br/>
+            5.Scan this QR code with your MetaMask mobile app.<br/></p>,
         },
         
         {
@@ -43,8 +43,6 @@ const data = {
         },
     ],
 };
-
-
 
 const styles = {
     // bgColor: 'white',

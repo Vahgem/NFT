@@ -1,3 +1,6 @@
+.HowtoAll {
+  padding-top: 100px;
+}
 .Howto {
   display: flex;
 }
@@ -10,6 +13,13 @@
   justify-content: center;
   text-align: center;
 }
+
 .faq-row-wrapper {
   padding: 0 15px;
+  padding-bottom: 30px;
+  padding-top: 30px;
+}
+
+#nav-wrap {
+  background-color: rgba(15, 15, 15, 0.8);
 }
