@@ -1,29 +1,54 @@
-import React from 'react';
-import './howto.css';
+import React from "react";
+import "./howto.css";
 export default function Howtonft() {
-    return (
-        <section id="Howto" className="HowtoAll" style={{ backgroundColor: 'yellow', padding: "20px", paddingTop: "120px" }}>
-            
-            <h1 style={{ textAlign: 'center' }}>Create and sell your NFT</h1>
-            <br />
-            
-            <ul className="Howto" >
-                <li>
-                    <i className="fa fa-suitcase fa-2x" ></i>
-                    <h3>Set up your wallet</h3>
-                    <p >Once you have set up your wallet of choice, connect it by clicking the wallet icon in the right corner.</p>
-                </li>
-                <li>
-                    <i className="fa fa-book fa-2x"   ></i>
-                    <h3>Create your collection</h3>
-                    <p>Click Create and set up your collections. Add social links, a description profile and banner images and set a secondary sales fee.</p>
-                </li>
-                <li>
-                    <i className="fa fa-picture-o fa-2x" ></i>
-                    <h3>Buy your NFTs</h3>
-                    <p>Choose bet ween auctioncs, fixed price listings and declining-price listings. You choose how you want to sell your NFTs and we help you sell them! </p>
-                </li>
-            </ul>
-        </section>
-    )
+  return (
+    <section
+      id="Howto"
+      className="HowtoAll"
+      style={{
+        backgroundColor: "#fcff00",
+        padding: "20px",
+        paddingTop: "6rem",
+        fontFamily: "Georgia, serif",
+      }}
+    >
+      <h1
+        style={{
+          textAlign: "center",
+          fontFamily: "Georgia, serif",
+          fontWeight: "600",
+        }}
+      >
+        Create And Sell Your NFT
+      </h1>
+      <br />
+
+      <ul className="Howto" style={{ color: "black" }}>
+        <li>
+          <i className="fa fa-suitcase fa-4x"></i>
+          <h3>Connect Your Wallet</h3>
+          <p style={{ fontSize: "19px" }}>
+            Before accessing marketplace,connect your wallet to the application
+            by clicking on connect wallet in the Navigation Bar.
+          </p>
+        </li>
+        <li>
+          <i className="fa fa-book fa-4x"></i>
+          <h3>Create Your NFT</h3>
+          <p style={{ fontSize: "19px" }}>
+            Click on Create NFT and enter details of your NFT. Add name, a
+            description profile and NFT content.
+          </p>
+        </li>
+        <li>
+          <i className="fa fa-picture-o fa-4x"></i>
+          <h3>Buy Marketplace NFTs</h3>
+          <p style={{ fontSize: "19px" }}>
+            Click on your desired NFT within the marketplace to purchase it by
+            confirming the required payment for the respective NFT.
+          </p>
+        </li>
+      </ul>
+    </section>
+  );
 }
