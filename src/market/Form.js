@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./form.css";
 import web3 from "../Ethereum/web3";
 import nft from "../Ethereum/nft";
+
 const { create } = require("ipfs-http-client");
 const ipfs = create({
   host: "ipfs.infura.io",
@@ -10,31 +11,42 @@ const ipfs = create({
 });
 
 const Form = () => {
-  const [NFT, setNFT] = useState({ name: "", image_url: "", description: "" });
+  const [NFT, setNFT] = useState({
+    name: "",
+    image_url: "",
+    description: "",
+    type: "",
+  });
+
   const [selectedFile, setSelectedFile] = useState("");
 
   const CaptureFile = (event) => {
     event.preventDefault();
     const file = event.target.files[0];
     console.log(file);
+
+    if (file.type.includes("image")) setNFT({ ...NFT, type: "image" });
+    else setNFT({ ...NFT, type: "video" });
+
     let reader = new window.FileReader();
     reader.readAsArrayBuffer(file);
     setSelectedFile(file);
   };
 
-  const submitForm = async (event) => {
+  const setNFTimage = async (event) => {
     event.preventDefault();
-    try {
-      const ipfsHash = await ipfs.add(selectedFile);
-      console.log(ipfsHash.path);
-      setNFT({ ...NFT, image_url: `https://ipfs.io/ipfs/${ipfsHash.path}` });
-    } catch (e) {
-      console.log(e);
-    }
+    const ipfsHash = await ipfs.add(selectedFile);
+    console.log(ipfsHash.path);
+    setNFT({
+      ...NFT,
+      image_url: `https://ipfs.io/ipfs/${ipfsHash.path}`,
+    });
+  };
 
+  const submitForm = async () => {
     try {
       const finalHash = await ipfs.add(JSON.stringify(NFT));
-      console.log(finalHash.path);
+      console.log(finalHash.path, NFT);
       const accounts = await web3.eth.getAccounts();
       await nft.methods
         .createNFT(accounts[0], `https://ipfs.io/ipfs/${finalHash.path}`)
@@ -43,6 +55,10 @@ const Form = () => {
       console.log(e);
     }
   };
+
+  useEffect(() => {
+    if (NFT.image_url.length > 0) submitForm(); //eslint-disable-next-line
+  }, [NFT.image_url]);
 
   return (
     <div className="Form">
@@ -68,7 +84,12 @@ const Form = () => {
           //required
         />
 
-        <button onClick={submitForm}>Submit</button>
+        <button
+          onClick={setNFTimage}
+          style={{ marginLeft: "6rem", width: "40%" }}
+        >
+          Submit
+        </button>
       </form>
     </div>
   );

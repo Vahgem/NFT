@@ -9,7 +9,9 @@ import { setcurrentuser } from "./redux/user/user-actions";
 
 const Homepage = ({ setcurrentuser }) => {
   useEffect(() => {
-    setcurrentuser({ accountAddress: "", ethId: "" }); //eslint-disable-next-line
+    window.onunload = () => {
+      setcurrentuser({ accountAddress: "", ethId: "" });
+    }; //eslint-disable-next-line
   }, []);
   return (
     <div className="App">

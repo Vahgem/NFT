@@ -3,6 +3,8 @@ import axios from "axios";
 import { connect } from "react-redux";
 import Mynftcard from "./Mynftcard";
 import { useAlert } from "react-alert";
+import ParticlesBg from "particles-bg";
+import "./Marketplace.css";
 const Mynft = ({ accountAddress }) => {
   const [mynft, Setmynft] = useState([]);
   const alert = useAlert();
@@ -13,7 +15,7 @@ const Mynft = ({ accountAddress }) => {
     } else {
       try {
         const response = await axios.get(
-          `https://rinkeby-api.opensea.io/api/v1/assets?owner=${accountAddress}&asset_contract_address=0xb6532f3a7ccb26c119d6f3faccaf6dd5bf4b5ff2`
+          `https://rinkeby-api.opensea.io/api/v1/assets?owner=${accountAddress}&asset_contract_address=0x4c79E9008cF09C908C051008EA258580875f41A3`
         );
         console.log(response.data.assets);
         Setmynft(response.data.assets);
@@ -28,7 +30,27 @@ const Mynft = ({ accountAddress }) => {
   }, []);
   return (
     <div className="nftcardgroup">
-      {mynft && mynft.map((nft) => <Mynftcard key={nft.id} nft={nft} />)}
+      {mynft.length > 0 ? (
+        <div>
+          <ParticlesBg bg={true} type="balls" />
+          {mynft.map((nft) => (
+            <Mynftcard key={nft.id} nft={nft} />
+          ))}
+          <ParticlesBg bg={true} type="balls" />
+        </div>
+      ) : (
+        <section
+          style={{
+            fontSize: "50px",
+            fontWeight: "900",
+            color: "#FFFFFF",
+            marginTop: "25rem",
+            marginLeft: "13em",
+          }}
+        >
+          No NFTs Owned
+        </section>
+      )}
     </div>
   );
 };

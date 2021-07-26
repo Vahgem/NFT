@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import Fade from "react-reveal";
-import kit from "./kit1.png";
+import pic from "./slider-pic1.png";
 class About extends Component {
   render() {
-
     //const name = this.props.data.name;
-    const bio = "We are a young company who wants to promote and build a platform to encourge the trade of NFTs of cricket and films. We recognise that these two things are really important and we would love to own these moments. And since these moments will have limited copies they become rather valuable.";
+    const bio =
+      "We are a young company who wants to promote and build a platform to encourge the trade of NFTs of cricket and films. We recognise that these two things are really important and we would love to own these moments. And since these moments will have limited copies they become rather valuable.";
     const street = "MLK street";
     const city = "Houston";
     const state = "Texas";
@@ -21,7 +21,7 @@ class About extends Component {
             <div className="three columns">
               <img
                 className="profile-pic"
-                src={kit}
+                src={pic}
                 alt="Nordic Giant Profile Pic"
               />
             </div>
@@ -29,23 +29,26 @@ class About extends Component {
               <h2>About Us</h2>
 
               <p>{bio}</p>
-                <div className="columns contact-details" style={{marginLeft:"13em"}}>
-                  <h2>Contact Details</h2>
-                  <p className="address">
-                    <span>BirthVenue</span>
+              <div
+                className="columns contact-details"
+                style={{ marginLeft: "13em" }}
+              >
+                <h2>Contact Details</h2>
+                <p className="address">
+                  <span>BirthVenue</span>
+                  <br />
+                  <span>
+                    {street}
                     <br />
-                    <span>
-                      {street}
-                      <br />
-                      {city} {state}, {zip}
-                    </span>
-                    <br />
-                    <span>{phone}</span>
-                    <br />
-                    <span>{email}</span>
-                  </p>
-                </div>
+                    {city} {state}, {zip}
+                  </span>
+                  <br />
+                  <span>{phone}</span>
+                  <br />
+                  <span>{email}</span>
+                </p>
               </div>
+            </div>
           </div>
         </Fade>
       </section>
