@@ -6,7 +6,7 @@ export default function Howtonft() {
       id="Howto"
       className="HowtoAll"
       style={{
-        background: "rgba(252,255,0,0.3)",
+        // background: "rgba(252,255,0,0.3)",
         padding: "20px",
         paddingTop: "6rem",
         fontFamily: "Georgia, serif",
@@ -17,33 +17,34 @@ export default function Howtonft() {
           textAlign: "center",
           fontFamily: "Georgia, serif",
           fontWeight: "600",
+          color: "white",
+          marginBottom: "20px",
         }}
       >
         Create And Sell Your NFT
       </h1>
-      <br />
 
-      <ul className="Howto" style={{ color: "black" }}>
+      <ul className="Howto" style={{ color: "white" }}>
         <li>
-          <i className="fa fa-suitcase fa-4x"></i>
-          <h3>Connect Your Wallet</h3>
-          <p style={{ fontSize: "19px" }}>
+          <i className="fa fa-suitcase fa-4x" style={{ color: "#B5EAEA" }}></i>
+          <h3 style={{ color: "white" }}>Connect Your Wallet</h3>
+          <p style={{ fontSize: "19px", fontWeight: "100" }}>
             Before accessing marketplace,connect your wallet to the application
             by clicking on connect wallet in the Navigation Bar.
           </p>
         </li>
         <li>
-          <i className="fa fa-book fa-4x"></i>
-          <h3>Create Your NFT</h3>
-          <p style={{ fontSize: "19px" }}>
+          <i className="fa fa-book fa-4x" style={{ color: "#B5EAEA" }}></i>
+          <h3 style={{ color: "white" }}>Create Your NFT</h3>
+          <p style={{ fontSize: "19px", fontWeight: "100" }}>
             Click on Create NFT and enter details of your NFT. Add name, a
             description profile and NFT content.
           </p>
         </li>
         <li>
-          <i className="fa fa-picture-o fa-4x"></i>
-          <h3>Buy Marketplace NFTs</h3>
-          <p style={{ fontSize: "19px" }}>
+          <i className="fa fa-picture-o fa-4x" style={{ color: "#B5EAEA" }}></i>
+          <h3 style={{ color: "white" }}>Buy Marketplace NFTs</h3>
+          <p style={{ fontSize: "19px", fontWeight: "100" }}>
             Click on your desired NFT within the marketplace to purchase it by
             confirming the required payment for the respective NFT.
           </p>

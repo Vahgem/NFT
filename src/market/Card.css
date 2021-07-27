@@ -9,11 +9,12 @@
   flex: 20%;
   padding: 8px;
   margin: 10px;
-  background: linear-gradient(to bottom, #cc3300 0%, #660066 100%);
+  background: black;
+  /* background: linear-gradient(to bottom, #cc3300 0%, #660066 100%); */
   width: 220px;
   max-height: auto;
   border-radius: 10px;
-  border: 2px solid #ccc;
+  border: 1px solid #ccc;
 }
 .cards_items:hover {
   box-shadow: 3px 6px #888888;

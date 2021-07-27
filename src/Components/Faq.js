@@ -90,7 +90,7 @@ const data = {
 
     {
       title: (
-        <div style={{ fontWeight: "700" }}>
+        <div style={{ fontWeight: "600" }}>
           What Networks are currently supported ?
         </div>
       ),
@@ -110,9 +110,10 @@ const config = {
   tabFocus: true,
 };
 const style = {
-  bgColor: "#BBBFCA",
-  titleTextColor: "black",
-  rowTitleColor: "black",
+  bgColor: "#0A1931",
+  titleTextColor: "white",
+  rowTitleColor: "white",
+  rowContentColor: "white",
   rowContentTextSize: "17px",
   fontSize: "15px",
   padding: "15px",

@@ -4,6 +4,8 @@ import Web3 from "web3";
 import axios from "axios";
 import "./Card.css";
 import Popup from "reactjs-popup";
+import { useAlert } from "react-alert";
+
 const opensea = require("opensea-js");
 
 const provider = new WalletConnectProvider({
@@ -19,8 +21,9 @@ const seaport = new OpenSeaPort(provider, {
 
 const Mynftcard = ({ nft }) => {
   const [type, Settype] = useState("");
+  const alert = useAlert();
 
-  console.log(nft);
+  //console.log(nft);
 
   const Sell = async (event) => {
     event.preventDefault();
@@ -50,7 +53,7 @@ const Mynftcard = ({ nft }) => {
       await provider.disconnect();
     } catch (e) {
       if (e.message !== "User closed modal") {
-        alert(e.message);
+        alert.show(e.message);
       }
       await provider.disconnect();
       window.location.reload();
@@ -70,7 +73,6 @@ const Mynftcard = ({ nft }) => {
   const [price, setPrice] = useState("0.00");
   return (
     <div>
-
       <div className="cards_items" style={{ width: "350px" }}>
         <embed
           type={type === "image" ? "image/jpg" : "video/webm"}

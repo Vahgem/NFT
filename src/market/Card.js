@@ -4,6 +4,8 @@ import WalletConnectProvider from "@walletconnect/web3-provider";
 import Web3 from "web3";
 import { OrderSide } from "opensea-js/lib/types";
 import axios from "axios";
+import { useAlert } from "react-alert";
+
 const opensea = require("opensea-js");
 
 const provider = new WalletConnectProvider({
@@ -18,6 +20,8 @@ const seaport = new OpenSeaPort(provider, {
 });
 const Card = ({ nft }) => {
   const [type, Settype] = useState("");
+  const alert = useAlert();
+
   const Purchase = async (event) => {
     event.preventDefault();
     try {
@@ -44,7 +48,7 @@ const Card = ({ nft }) => {
       await provider.disconnect();
     } catch (e) {
       if (e.message !== "User closed modal") {
-        alert(e.message);
+        alert.show(e.message);
         await provider.disconnect();
       } else {
         await provider.disconnect();
@@ -93,7 +97,7 @@ const Card = ({ nft }) => {
         type="button"
         value="Purchase"
         onClick={Purchase}
-        style={{ marginLeft: "2.2em", width: "40%",borderradius:"10px" }}
+        style={{ marginLeft: "2.2em", width: "40%", borderradius: "10px" }}
       />
     </div>
   );
