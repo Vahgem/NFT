@@ -70,11 +70,7 @@ const Mynftcard = ({ nft }) => {
   const [price, setPrice] = useState("0.00");
   return (
     <div>
-<<<<<<< HEAD
-      <div className="cards_items">
-        <embed type="image/jpg" src={nft.image_url} alt={nft.name} style={{objectFit: "contain",overflow:"hidden",width: "100%",
-height: "150px"}}/>
-=======
+
       <div className="cards_items" style={{ width: "350px" }}>
         <embed
           type={type === "image" ? "image/jpg" : "video/webm"}
@@ -87,20 +83,14 @@ height: "150px"}}/>
             height: "250px",
           }}
         />
->>>>>>> f01e8a0b1af9a12957506e34b824bb6a77535cb3
+
         <div className="desc">
           <div className="titles">
             <div className="name">{nft.name}</div>
             <div className="code">{nft.description}</div>
           </div>
         </div>
-        <br />
-<<<<<<< HEAD
-        <Popup trigger={<button className="button" style={{borderRadius:"10px",marginLeft:"4em"}}> Sell</button>} modal>
-        <form style={{
-  backgroundColor:"antiquewhite",padding: "15px", border:"2px solid #333",
-}}
-=======
+
         {nft.sell_orders ? (
           <div
             style={{
@@ -126,7 +116,6 @@ height: "150px"}}/>
               </button>
             }
             modal
->>>>>>> f01e8a0b1af9a12957506e34b824bb6a77535cb3
           >
             <form
               style={{

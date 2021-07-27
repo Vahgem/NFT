@@ -25,11 +25,6 @@ export default function Marketplace() {
     getData(); //eslint-disable-next-line
   }, []);
   return (
-<<<<<<< HEAD
-    <div className="cards">
-      
-      {market && market.map((nft) => <Card key={nft.id} nft={nft} />)}
-=======
     <div className="nftcardgroup" style={{ marginTop: "0px" }}>
       {market && (
         <div>
@@ -41,7 +36,7 @@ export default function Marketplace() {
           <ParticlesBg bg={true} type="square" />
         </div>
       )}
->>>>>>> f01e8a0b1af9a12957506e34b824bb6a77535cb3
+
     </div>
   );
 }

@@ -53,18 +53,6 @@ const Card = ({ nft }) => {
     }
   };
 
-<<<<<<< HEAD
-          <div className="price">
-            <div className="pn">Price</div>
-            <div className="pval">$
-              {nft.sell_orders &&
-                parseInt(nft.sell_orders[0].base_price, 10) / Math.pow(10, 18)}
-            </div>
-          </div>
-        </div>
-        <br />
-        <input type="button" value="Purchase" style={{borderRadius:"10px",marginLeft:"2.2em"}} onClick={Purchase} />
-=======
   const getIpfsdata = async () => {
     const data = await axios.get(`${nft.token_metadata}`);
     Settype(data.data.type);
@@ -99,14 +87,13 @@ const Card = ({ nft }) => {
             parseInt(nft.sell_orders[0].base_price, 10) / Math.pow(10, 18)}{" "}
           Ether
         </div>
->>>>>>> f01e8a0b1af9a12957506e34b824bb6a77535cb3
       </div>
       <br />
       <input
         type="button"
         value="Purchase"
         onClick={Purchase}
-        style={{ marginLeft: "10rem", width: "40%" }}
+        style={{ marginLeft: "2.2em", width: "40%",borderradius:"10px" }}
       />
     </div>
   );

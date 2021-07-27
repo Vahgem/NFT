@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import Mynftcard from "./Mynftcard";
-import ParticlesBg from "particles-bg";
 import { useAlert } from "react-alert";
-import ParticlesBg from "particles-bg";
+
 import "./Marketplace.css";
 const Mynft = ({ accountAddress }) => {
   const [mynft, Setmynft] = useState([]);
@@ -31,18 +30,13 @@ const Mynft = ({ accountAddress }) => {
   }, []);
   return (
     <div className="nftcardgroup">
-<<<<<<< HEAD
-       <ParticlesBg type="balls" bg={true} />
-      {mynft && mynft.map((nft) => <Mynftcard key={nft.id} nft={nft} />)}
-      <ParticlesBg type="balls" bg={true} />
-=======
       {mynft.length > 0 ? (
         <div>
-          <ParticlesBg bg={true} type="balls" />
+         
           {mynft.map((nft) => (
             <Mynftcard key={nft.id} nft={nft} />
           ))}
-          <ParticlesBg bg={true} type="balls" />
+         
         </div>
       ) : (
         <section
@@ -57,7 +51,7 @@ const Mynft = ({ accountAddress }) => {
           No NFTs Owned
         </section>
       )}
->>>>>>> f01e8a0b1af9a12957506e34b824bb6a77535cb3
+
     </div>
   );
 };
