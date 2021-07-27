@@ -23,7 +23,7 @@ const Mynftcard = ({ nft }) => {
   const [type, Settype] = useState("");
   const alert = useAlert();
 
-  //console.log(nft);
+  console.log(nft);
 
   const Sell = async (event) => {
     event.preventDefault();
@@ -88,8 +88,12 @@ const Mynftcard = ({ nft }) => {
 
         <div className="desc">
           <div className="titles">
-            <div className="name">{nft.name}</div>
-            <div className="code">{nft.description}</div>
+            <div className="name" style={{ color: "white" }}>
+              {nft.name}
+            </div>
+            <div className="code" style={{ color: "white" }}>
+              {nft.description}
+            </div>
           </div>
         </div>
 
@@ -121,18 +125,26 @@ const Mynftcard = ({ nft }) => {
           >
             <form
               style={{
-                backgroundColor: "antiquewhite",
+                backgroundColor: "#424242",
                 padding: "15px",
               }}
             >
-              <label>Price</label>
+              <label
+                style={{ color: "black", fontWeight: "700", fontSize: "18px" }}
+              >
+                Price
+              </label>
               <input
                 type="number"
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
                 required
               />
-              <label>Duration of selling period</label>
+              <label
+                style={{ color: "black", fontWeight: "700", fontSize: "18px" }}
+              >
+                Validity (in Days)
+              </label>
               <input
                 type="number"
                 value={days}
@@ -140,7 +152,6 @@ const Mynftcard = ({ nft }) => {
                 required
               />
               <br />
-              <hr />
               <input
                 type="submit"
                 onClick={Sell}

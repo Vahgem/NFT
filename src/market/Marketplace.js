@@ -3,7 +3,7 @@ import axios from "axios";
 import Card from "./Card";
 import "./Marketplace.css";
 import ParticlesBg from "particles-bg";
-
+import "./Card.css";
 export default function Marketplace() {
   const [market, SetMarket] = useState(null);
 
@@ -27,7 +27,7 @@ export default function Marketplace() {
   return (
     <div className="nftcardgroup" style={{ marginTop: "0px" }}>
       {market && (
-        <div>
+        <div className="cards">
           {" "}
           <ParticlesBg bg={true} type="square" />
           {market.map((nft) => (
@@ -36,7 +36,6 @@ export default function Marketplace() {
           <ParticlesBg bg={true} type="square" />
         </div>
       )}
-
     </div>
   );
 }

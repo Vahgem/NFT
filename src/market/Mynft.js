@@ -31,12 +31,10 @@ const Mynft = ({ accountAddress }) => {
   return (
     <div className="nftcardgroup">
       {mynft.length > 0 ? (
-        <div>
-         
+        <div className="cards">
           {mynft.map((nft) => (
             <Mynftcard key={nft.id} nft={nft} />
           ))}
-         
         </div>
       ) : (
         <section
@@ -51,7 +49,6 @@ const Mynft = ({ accountAddress }) => {
           No NFTs Owned
         </section>
       )}
-
     </div>
   );
 };
