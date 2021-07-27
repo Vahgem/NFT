@@ -93,7 +93,7 @@ const Card = ({ nft }) => {
         type="button"
         value="Purchase"
         onClick={Purchase}
-        style={{ marginLeft: "10rem", width: "40%" }}
+        style={{ marginLeft: "2.2em", width: "40%",borderradius:"10px" }}
       />
     </div>
   );

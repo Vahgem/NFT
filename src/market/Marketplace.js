@@ -36,6 +36,7 @@ export default function Marketplace() {
           <ParticlesBg bg={true} type="square" />
         </div>
       )}
+
     </div>
   );
 }

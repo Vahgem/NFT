@@ -3,7 +3,7 @@ import axios from "axios";
 import { connect } from "react-redux";
 import Mynftcard from "./Mynftcard";
 import { useAlert } from "react-alert";
-import ParticlesBg from "particles-bg";
+
 import "./Marketplace.css";
 const Mynft = ({ accountAddress }) => {
   const [mynft, Setmynft] = useState([]);
@@ -32,11 +32,11 @@ const Mynft = ({ accountAddress }) => {
     <div className="nftcardgroup">
       {mynft.length > 0 ? (
         <div>
-          <ParticlesBg bg={true} type="balls" />
+         
           {mynft.map((nft) => (
             <Mynftcard key={nft.id} nft={nft} />
           ))}
-          <ParticlesBg bg={true} type="balls" />
+         
         </div>
       ) : (
         <section
@@ -51,6 +51,7 @@ const Mynft = ({ accountAddress }) => {
           No NFTs Owned
         </section>
       )}
+
     </div>
   );
 };
