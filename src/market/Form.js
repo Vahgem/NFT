@@ -19,14 +19,14 @@ const Form = () => {
   });
 
   const [selectedFile, setSelectedFile] = useState("");
-
+  const [filetype, setFiletype] = useState("");
   const CaptureFile = (event) => {
     event.preventDefault();
     const file = event.target.files[0];
     console.log(file);
 
-    if (file.type.includes("image")) setNFT({ ...NFT, type: "image" });
-    else setNFT({ ...NFT, type: "video" });
+    /*if (file.type.includes("image")) setNFT({ ...NFT, type: "image" });
+    else setNFT({ ...NFT, type: "video" });*/
 
     let reader = new window.FileReader();
     reader.readAsArrayBuffer(file);
@@ -37,6 +37,7 @@ const Form = () => {
     event.preventDefault();
     const ipfsHash = await ipfs.add(selectedFile);
     console.log(ipfsHash.path);
+    console.log(filetype);
     setNFT({
       ...NFT,
       image_url: `https://ipfs.io/ipfs/${ipfsHash.path}`,
@@ -44,6 +45,8 @@ const Form = () => {
   };
 
   const submitForm = async () => {
+    console.log(filetype);
+    console.log(NFT);
     try {
       const finalHash = await ipfs.add(JSON.stringify(NFT));
       console.log(finalHash.path, NFT);
@@ -55,7 +58,6 @@ const Form = () => {
       console.log(e);
     }
   };
-
   useEffect(() => {
     if (NFT.image_url.length > 0) submitForm(); //eslint-disable-next-line
   }, [NFT.image_url]);
@@ -83,6 +85,18 @@ const Form = () => {
           onChange={(e) => setNFT({ ...NFT, description: e.target.value })}
           //required
         />
+
+        <h3>What is the type of the File</h3>
+        <select 
+        value={filetype} 
+        onChange={
+          setNFT({ ...NFT, type: filetype })} 
+        >
+          <option value="" onClick={()=>setFiletype("")}>Choose</option>
+       <option value="image/jpg" onClick={()=>setFiletype("image/jpg")}>Image/Gifs</option>
+        <option value="video/webm"  onClick={()=>setFiletype("video/webm")}>Video</option>
+      </select>
+
 
         <button
           onClick={setNFTimage}

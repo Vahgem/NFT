@@ -27,13 +27,13 @@ export default function Marketplace() {
   return (
     <div className="nftcardgroup" style={{ marginTop: "0px" }}>
       {market && (
-        <div>
+        <div className="cards">
           {" "}
           <ParticlesBg bg={true} type="square" />
           {market.map((nft) => (
             <Card key={nft.id} nft={nft} />
           ))}
-          <ParticlesBg bg={true} type="square" />
+        
         </div>
       )}
 
