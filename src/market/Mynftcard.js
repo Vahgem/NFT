@@ -66,7 +66,7 @@ const Mynftcard = ({ nft }) => {
   const [price, setPrice] = useState("0.00");
 
   return (
-    <div className="cards_items" style={{ width: "250px", maxHeight: "400px" }}>
+    <div className="cards_items" style={{ width: "300px", maxHeight: "auto" }}>
       <embed
         type={nft.type}
         src={nft.image_url}
@@ -79,16 +79,18 @@ const Mynftcard = ({ nft }) => {
         }}
       />
 
-        <div className="desc">
-          <div className="titles" style={{ flex:"80%" }}>
-            <div className="name" style={{ color: "white",fontWeight: "700" }}>
-              {nft.name}
-            </div>
-            <div className="code" style={{ color: "white" }}>
-              {nft.description}
+      <div className="desc">
+        <div className="titles">
+          <div className="name" style={{ color: "white", fontWeight: "700" }}>
+            <div className="titles" style={{ flex: "80%" }}>
+              <div className="name" style={{ color: "white" }}>
+                {nft.name}
+              </div>
+              <div className="code" style={{ color: "white" }}>
+                {nft.description}
+              </div>
             </div>
           </div>
-
           {nft.sell_orders ? (
             <div
               style={{

@@ -115,6 +115,7 @@ const style = {
   rowTitleColor: "white",
   rowContentColor: "white",
   rowContentTextSize: "17px",
+  arrowColor: "white",
   fontSize: "15px",
   padding: "15px",
   margin: "15px",
