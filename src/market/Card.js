@@ -80,12 +80,18 @@ const Card = ({ nft }) => {
       />
       <div className="desc">
         <div className="titles">
-          <div className="name">{nft.name}</div>
-          <div className="code">{nft.description}</div>
+          <div className="name" style={{ color: "white" }}>
+            {nft.name}
+          </div>
+          <div className="code" style={{ color: "white" }}>
+            {nft.description}
+          </div>
         </div>
-        <div className="price">
-        <div className="pn">Price</div>
-        <div className="pval">
+      <div className="price">
+        <div className="pn" style={{ color: "white" }}>
+          Price
+        </div>
+        <div className="pval" style={{ color: "white" }}>
           {nft.sell_orders &&
             parseInt(nft.sell_orders[0].base_price, 10) / Math.pow(10, 18)}{" "}
           Ether

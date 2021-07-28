@@ -15,8 +15,9 @@ const Form = () => {
     name: "",
     image_url: "",
     description: "",
-    type: "",
+    type: "image",
   });
+  console.log(NFT);
 
   const [selectedFile, setSelectedFile] = useState("");
   const [filetype, setFiletype] = useState("");
@@ -25,8 +26,8 @@ const Form = () => {
     const file = event.target.files[0];
     console.log(file);
 
-    /*if (file.type.includes("image")) setNFT({ ...NFT, type: "image" });
-    else setNFT({ ...NFT, type: "video" });*/
+    //if (file.type.includes("image")) setNFT({ ...NFT, type: "image" });
+    //else setNFT({ ...NFT, type: "video" });
 
     let reader = new window.FileReader();
     reader.readAsArrayBuffer(file);
@@ -63,9 +64,11 @@ const Form = () => {
   }, [NFT.image_url]);
 
   return (
-    <div >
+    <div>
       <form className="Form">
-        <label>NFT Name</label>
+        <label style={{ color: "black", fontWeight: "700", fontSize: "18px" }}>
+          NFT Name
+        </label>
         <input
           type="name"
           value={NFT.name}
@@ -74,9 +77,15 @@ const Form = () => {
           onChange={(e) => setNFT({ ...NFT, name: e.target.value })}
           //required
         />
-        <label>Upload Your NFT Data</label>
-        <input type="file" onChange={CaptureFile} />
-        <label>Description of NFT</label>
+        <label style={{ color: "black", fontWeight: "700", fontSize: "18px" }}>
+          Upload Your NFT Data
+        </label>
+        <div className="custom-file-upload">
+          <input type="file" onChange={CaptureFile} />{" "}
+        </div>
+        <label style={{ color: "black", fontWeight: "700", fontSize: "18px" }}>
+          Description of NFT
+        </label>
         <input
           type="text"
           value={NFT.description}
@@ -86,18 +95,18 @@ const Form = () => {
           //required
         />
 
-        <h3>What is the type of the File</h3>
-        <select 
-        value={filetype} 
-        onChange={
-          setNFT({ ...NFT, type: filetype })} 
+        <label style={{ color: "black", fontWeight: "700", fontSize: "18px" }}>
+          Select File Type
+        </label>
+        <select
+          style={{ color: "black", fontSize: "14px", height: "auto" }}
+          value={NFT.type}
+          onChange={(e) => setNFT({ ...NFT, type: e.target.value })}
         >
-          <option value="" onClick={()=>setFiletype("")}>Choose</option>
-       <option value="image/jpg" onClick={()=>setFiletype("image/jpg")}>Image/Gifs</option>
-        <option value="video/webm"  onClick={()=>setFiletype("video/webm")}>Video</option>
-      </select>
-
-
+          <option value="image">Image/Gifs</option>
+          <option value="video">Video</option>
+        </select>
+        <br />
         <button
           onClick={setNFTimage}
           style={{ marginLeft: "6rem", width: "40%" }}
