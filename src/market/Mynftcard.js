@@ -20,7 +20,7 @@ const seaport = new OpenSeaPort(provider, {
 });
 
 const Mynftcard = ({ nft }) => {
-  const [type, Settype] = useState("");
+ /* const [type, Settype] = useState("");*/
   const alert = useAlert();
 
   console.log(nft);
@@ -59,7 +59,7 @@ const Mynftcard = ({ nft }) => {
       window.location.reload();
     }
   };
-
+/*
   const getIpfsdata = async () => {
     const data = await axios.get(`${nft.token_metadata}`);
     Settype(data.data.type);
@@ -67,22 +67,22 @@ const Mynftcard = ({ nft }) => {
 
   useEffect(() => {
     getIpfsdata(); //eslint-disable-next-line
-  }, []);
+  }, []);*/
 
   const [days, setDays] = useState("0");
   const [price, setPrice] = useState("0.00");
   return (
     <div>
-      <div className="cards_items" style={{ width: "350px" }}>
+      <div className="cards_items" style={{ width: "250px",maxHeight:"400px" }}>
         <embed
-          type={type === "image" ? "image/jpg" : "video/webm"}
+          type={nft.type}
           src={nft.image_url}
           alt={nft.name}
           style={{
             objectFit: "contain",
-            overflow: "hidden",
+            overflow: "hidden !important",
             width: "100%",
-            height: "250px",
+            height: "200px",
           }}
         />
 
@@ -103,7 +103,10 @@ const Mynftcard = ({ nft }) => {
               color: "white",
               fontWeight: "700",
               display: "flex",
+              fontSize: "14px",
+              marginTop:"30px",
               justifyContent: "center",
+              marginBottom:"40px",
             }}
           >
             Already Listed at Price{" "}
@@ -115,7 +118,7 @@ const Mynftcard = ({ nft }) => {
             trigger={
               <button
                 className="button"
-                style={{ marginLeft: "10rem", width: "40%" }}
+                style={{ marginLeft: "15%",marginBottom:"25px",marginTop:"20px", width: "60%",borderRadius:"10px",backgroundColor:"orange"  }}
               >
                 {" "}
                 Sell Asset
@@ -156,7 +159,7 @@ const Mynftcard = ({ nft }) => {
                 type="submit"
                 onClick={Sell}
                 value="Sell"
-                style={{ marginLeft: "5rem", width: "40%" }}
+                style={{ marginLeft: "30%", width: "40%",borderRadius:"10px" }}
               />
             </form>{" "}
             )

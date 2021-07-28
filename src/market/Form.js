@@ -20,7 +20,7 @@ const Form = () => {
   console.log(NFT);
 
   const [selectedFile, setSelectedFile] = useState("");
-
+  const [filetype, setFiletype] = useState("");
   const CaptureFile = (event) => {
     event.preventDefault();
     const file = event.target.files[0];
@@ -38,6 +38,7 @@ const Form = () => {
     event.preventDefault();
     const ipfsHash = await ipfs.add(selectedFile);
     console.log(ipfsHash.path);
+    console.log(filetype);
     setNFT({
       ...NFT,
       image_url: `https://ipfs.io/ipfs/${ipfsHash.path}`,
@@ -45,6 +46,8 @@ const Form = () => {
   };
 
   const submitForm = async () => {
+    console.log(filetype);
+    console.log(NFT);
     try {
       const finalHash = await ipfs.add(JSON.stringify(NFT));
       console.log(finalHash.path, NFT);
@@ -56,7 +59,6 @@ const Form = () => {
       console.log(e);
     }
   };
-
   useEffect(() => {
     if (NFT.image_url.length > 0) submitForm(); //eslint-disable-next-line
   }, [NFT.image_url]);
@@ -92,6 +94,7 @@ const Form = () => {
           onChange={(e) => setNFT({ ...NFT, description: e.target.value })}
           //required
         />
+
         <label style={{ color: "black", fontWeight: "700", fontSize: "18px" }}>
           Select File Type
         </label>

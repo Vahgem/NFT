@@ -33,7 +33,7 @@ export default function Marketplace() {
           {market.map((nft) => (
             <Card key={nft.id} nft={nft} />
           ))}
-          <ParticlesBg bg={true} type="square" />
+        
         </div>
       )}
     </div>

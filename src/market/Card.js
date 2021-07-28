@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./Card.css";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import Web3 from "web3";
 import { OrderSide } from "opensea-js/lib/types";
-import axios from "axios";
+
 import { useAlert } from "react-alert";
 
 const opensea = require("opensea-js");
@@ -19,7 +19,7 @@ const seaport = new OpenSeaPort(provider, {
   networkName: Network.Rinkeby,
 });
 const Card = ({ nft }) => {
-  const [type, Settype] = useState("");
+  /* const [type, Settype] = useState("");*/
   const alert = useAlert();
 
   const Purchase = async (event) => {
@@ -45,6 +45,7 @@ const Card = ({ nft }) => {
       });
 
       console.log(response);
+      
       await provider.disconnect();
     } catch (e) {
       if (e.message !== "User closed modal") {
@@ -56,26 +57,25 @@ const Card = ({ nft }) => {
       }
     }
   };
-
-  const getIpfsdata = async () => {
-    const data = await axios.get(`${nft.token_metadata}`);
-    Settype(data.data.type);
-  };
-
-  useEffect(() => {
-    getIpfsdata(); //eslint-disable-next-line
-  }, []);
-
+  /*
+    const getIpfsdata = async () => {
+      const data = await axios.get(`${nft.token_metadata}`);
+      Settype(data.data.type);
+    };
+  
+    useEffect(() => {
+      getIpfsdata(); //eslint-disable-next-line
+    }, []);*/
   return (
-    <div className="cards_items" style={{ width: "350px" }}>
+    <div className="cards_items" style={{ width: "250px",maxHeight:"400px" }}>
       <embed
-        type={type === "image" ? "image/jpg" : "video/webm"}
+        type={nft.type}
         src={nft.image_url}
         style={{
           objectFit: "contain",
           overflow: "hidden",
           width: "100%",
-          height: "250px",
+          height: "200px",
         }}
       />
       <div className="desc">
@@ -87,7 +87,6 @@ const Card = ({ nft }) => {
             {nft.description}
           </div>
         </div>
-      </div>
       <div className="price">
         <div className="pn" style={{ color: "white" }}>
           Price
@@ -98,12 +97,13 @@ const Card = ({ nft }) => {
           Ether
         </div>
       </div>
+      </div>
       <br />
       <input
         type="button"
         value="Purchase"
         onClick={Purchase}
-        style={{ marginLeft: "2.2em", width: "40%", borderradius: "10px" }}
+        style={{ marginLeft: "25%", width: "50%", borderRadius: "12px",backgroundColor:"green" }}
       />
     </div>
   );

@@ -12,7 +12,7 @@ const project = "./market";
 const github = "https://github.com/Vahgem/Homepage";
 
 const description =
-  "Filmstars and cricketers have always been connected, we can see multiple cricketers and filmstars meeting and even go as far as to date.";
+  "The relationship between Bollywood and cricket goes a long way, celebs form both the industries have made headlines together. Many movies have been made about the sport and biopics on legendary stars are also in the pipeline.";
 
 const Header = ({ setcurrentuser, accountAddress }) => {
   const [curr, setCurr] = useState("home");

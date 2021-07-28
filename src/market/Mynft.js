@@ -32,6 +32,7 @@ const Mynft = ({ accountAddress }) => {
     <div className="nftcardgroup">
       {mynft.length > 0 ? (
         <div className="cards">
+
           {mynft.map((nft) => (
             <Mynftcard key={nft.id} nft={nft} />
           ))}
