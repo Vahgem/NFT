@@ -87,7 +87,7 @@ const Mynftcard = ({ nft }) => {
         />
 
         <div className="desc">
-          <div className="titles">
+          <div className="titles" style={{ flex:"80%" }}>
             <div className="name" style={{ color: "white" }}>
               {nft.name}
             </div>

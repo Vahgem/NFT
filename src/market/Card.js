@@ -67,7 +67,7 @@ const Card = ({ nft }) => {
       getIpfsdata(); //eslint-disable-next-line
     }, []);*/
   return (
-    <div className="cards_items" style={{ width: "250px",maxHeight:"400px" }}>
+    <div className="cards_items" style={{ width: "250px",maxHeight:"auto" }}>
       <embed
         type={nft.type}
         src={nft.image_url}
