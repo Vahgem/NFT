@@ -25,8 +25,10 @@ const Mynftcard = ({ nft }) => {
   const [price, setPrice] = useState("0.00");
   console.log(nft);
   const Sell = async (event) => {
-    const expirationms = Math.round(Date.now() + 1000 * 60 * 60 * (24 * parseInt(days)));
-    
+    const expirationms = Math.round(
+      Date.now() + 1000 * 60 * 60 * (24 * parseInt(days))
+    );
+
     event.preventDefault();
     var d = new Date(expirationms);
     d.toString();
@@ -62,9 +64,6 @@ const Mynftcard = ({ nft }) => {
     }
   };
 
-  const [days, setDays] = useState("0");
-  const [price, setPrice] = useState("0.00");
-
   return (
     <div className="cards_items" style={{ width: "300px", maxHeight: "auto" }}>
       <embed
@@ -83,10 +82,16 @@ const Mynftcard = ({ nft }) => {
         <div className="titles">
           <div className="name" style={{ color: "white", fontWeight: "700" }}>
             <div className="titles" style={{ flex: "80%" }}>
-              <div className="name" style={{ color: "white" }}>
+              <div
+                className="name"
+                style={{ color: "white", fontSize: "18px" }}
+              >
                 {nft.name}
               </div>
-              <div className="code" style={{ color: "white" }}>
+              <div
+                className="code"
+                style={{ color: "white", fontWeight: "200" }}
+              >
                 {nft.description}
               </div>
             </div>
@@ -180,6 +185,7 @@ const Mynftcard = ({ nft }) => {
           )}
         </div>
       </div>
+    </div>
   );
 };
 

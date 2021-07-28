@@ -28,28 +28,27 @@ const Card = ({ nft }) => {
   let min = parseInt(datewegot.slice(14, 16));
   min = min + 30;
   if (min >= 60) {
-    min-= 60;
+    min -= 60;
     hour += 6;
-  }
-  else {
+  } else {
     hour += 5;
   }
   if (hour >= 24) {
     hour -= 24;
     date += 1;
-    if (month == 2 && date > 28) {
+    if (month === 2 && date > 28) {
       month += 1;
       date = 1;
-    }
-    else if ((month == 4 || month == 6 || month == 9 || month == 11) && date > 30) {
+    } else if (
+      (month === 4 || month === 6 || month === 9 || month === 11) &&
+      date > 30
+    ) {
       month += 1;
       date = 1;
-    }
-    else if(month!=12&&date>31) {
+    } else if (month !== 12 && date > 31) {
       month += 1;
       date = 1;
-    }
-    else if (month == 12 && date > 31) {
+    } else if (month === 12 && date > 31) {
       year += 1;
       month = 1;
       date = 1;
@@ -96,7 +95,7 @@ const Card = ({ nft }) => {
   };
 
   return (
-        <div className="cards_items" style={{ width: "300px", maxHeight: "auto" }}>
+    <div className="cards_items" style={{ width: "300px", maxHeight: "auto" }}>
       <embed
         type={nft.type}
         src={nft.image_url}
@@ -109,7 +108,10 @@ const Card = ({ nft }) => {
       />
       <div className="desc">
         <div className="titles">
-          <div className="name" style={{ color: "white", fontWeight: "700" }}>
+          <div
+            className="name"
+            style={{ color: "white", fontWeight: "700", fontSize: "18px" }}
+          >
             {nft.name}
           </div>
           <div className="code" style={{ color: "white" }}>
@@ -140,7 +142,18 @@ const Card = ({ nft }) => {
           backgroundColor: "green",
         }}
       />
-      <div><h3 style={{ margin:"0",textAlign: "center", fontSize: "14px", color: "white" }}>Expires At: {date + "-" + month + "-" + year + " " + hour + ":" + min}</h3></div>
+      <div>
+        <h3
+          style={{
+            margin: "0",
+            textAlign: "center",
+            fontSize: "15px",
+            color: "white",
+          }}
+        >
+          Expires At: {date + "-" + month + "-" + year + " " + hour + ":" + min}
+        </h3>
+      </div>
     </div>
   );
 };
