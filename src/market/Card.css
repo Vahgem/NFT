@@ -28,22 +28,22 @@
   display: flex;
 }
 .titles {
-  flex: 60%;
+  flex: 70%;
   color: #ccc;
   text-align: left;
 }
 .price {
-  flex: 40%;
+  flex: 30%;
   color: #ddd;
   text-align: right;
 }
 .name {
-  word-break: break-all;
+  word-break: keep-all;
   font-size: 15px;
 }
 .code {
   font-size: 12px;
-  word-break: break-all;
+  word-break: keep-all;
 }
 .pn {
   font-size: 15px;

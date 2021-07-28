@@ -83,8 +83,13 @@ const Mynftcard = ({ nft }) => {
         />
 
         <div className="desc">
+<<<<<<< HEAD
           <div className="titles">
             <div className="name" style={{ color: "white", fontWeight: "700" }}>
+=======
+          <div className="titles" style={{ flex:"80%" }}>
+            <div className="name" style={{ color: "white" }}>
+>>>>>>> b8ceda5a89de6efa437ce92a9db31edbd05dee25
               {nft.name}
             </div>
             <div className="code" style={{ color: "white" }}>

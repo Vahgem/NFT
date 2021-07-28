@@ -60,7 +60,11 @@ const Card = ({ nft }) => {
   };
 
   return (
+<<<<<<< HEAD
     <div className="cards_items" style={{ width: "250px", maxHeight: "400px" }}>
+=======
+    <div className="cards_items" style={{ width: "250px",maxHeight:"auto" }}>
+>>>>>>> b8ceda5a89de6efa437ce92a9db31edbd05dee25
       <embed
         type={nft.type}
         src={nft.image_url}
