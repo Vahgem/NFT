@@ -37,10 +37,12 @@ const Card = ({ nft }) => {
       const accounts = await web3.eth.getAccounts();
       const accountAddress = accounts[0];
       console.log("2", orders, accountAddress, orders1);
+      const referrerAddress = "0xd32598dE51B64BBF0ABA45A34a58C2d365266Eb8";
 
       const response = await seaport.fulfillOrder({
         order: orders,
         accountAddress,
+        referrerAddress,
       });
       if (response) {
         alert.success("NFT successfully Purchased");
@@ -60,11 +62,7 @@ const Card = ({ nft }) => {
   };
 
   return (
-<<<<<<< HEAD
-    <div className="cards_items" style={{ width: "250px", maxHeight: "400px" }}>
-=======
-    <div className="cards_items" style={{ width: "250px",maxHeight:"auto" }}>
->>>>>>> b8ceda5a89de6efa437ce92a9db31edbd05dee25
+    <div className="cards_items" style={{ width: "300px", maxHeight: "auto" }}>
       <embed
         type={nft.type}
         src={nft.image_url}

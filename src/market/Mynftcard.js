@@ -65,7 +65,7 @@ const Mynftcard = ({ nft }) => {
   const [price, setPrice] = useState("0.00");
 
   return (
-    <div className="cards_items" style={{ width: "250px", maxHeight: "400px" }}>
+    <div className="cards_items" style={{ width: "300px", maxHeight: "auto" }}>
       <embed
         type={nft.type}
         src={nft.image_url}
