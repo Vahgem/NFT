@@ -19,7 +19,6 @@ const seaport = new OpenSeaPort(provider, {
   networkName: Network.Rinkeby,
 });
 const Card = ({ nft }) => {
-  /* const [type, Settype] = useState("");*/
   const alert = useAlert();
 
   const Purchase = async (event) => {
@@ -43,9 +42,11 @@ const Card = ({ nft }) => {
         order: orders,
         accountAddress,
       });
-
+      if (response) {
+        alert.success("NFT successfully Purchased");
+      }
       console.log(response);
-      
+
       await provider.disconnect();
     } catch (e) {
       if (e.message !== "User closed modal") {
@@ -57,17 +58,9 @@ const Card = ({ nft }) => {
       }
     }
   };
-  /*
-    const getIpfsdata = async () => {
-      const data = await axios.get(`${nft.token_metadata}`);
-      Settype(data.data.type);
-    };
-  
-    useEffect(() => {
-      getIpfsdata(); //eslint-disable-next-line
-    }, []);*/
+
   return (
-    <div className="cards_items" style={{ width: "250px",maxHeight:"400px" }}>
+    <div className="cards_items" style={{ width: "250px", maxHeight: "400px" }}>
       <embed
         type={nft.type}
         src={nft.image_url}
@@ -80,30 +73,36 @@ const Card = ({ nft }) => {
       />
       <div className="desc">
         <div className="titles">
-          <div className="name" style={{ color: "white" }}>
+          <div className="name" style={{ color: "white", fontWeight: "700" }}>
             {nft.name}
           </div>
           <div className="code" style={{ color: "white" }}>
             {nft.description}
           </div>
         </div>
-      <div className="price">
-        <div className="pn" style={{ color: "white" }}>
-          Price
+        <div className="price">
+          <div className="pn" style={{ color: "white", fontWeight: "700" }}>
+            Price
+          </div>
+          <div className="pval" style={{ color: "white", fontWeight: "700" }}>
+            {nft.sell_orders &&
+              parseInt(nft.sell_orders[0].base_price, 10) /
+                Math.pow(10, 18)}{" "}
+            Ether
+          </div>
         </div>
-        <div className="pval" style={{ color: "white" }}>
-          {nft.sell_orders &&
-            parseInt(nft.sell_orders[0].base_price, 10) / Math.pow(10, 18)}{" "}
-          Ether
-        </div>
-      </div>
       </div>
       <br />
       <input
         type="button"
         value="Purchase"
         onClick={Purchase}
-        style={{ marginLeft: "25%", width: "50%", borderRadius: "12px",backgroundColor:"green" }}
+        style={{
+          marginLeft: "25%",
+          width: "50%",
+          borderRadius: "12px",
+          backgroundColor: "green",
+        }}
       />
     </div>
   );
