@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import Web3 from "web3";
 import "./Card.css";
@@ -19,7 +19,6 @@ const seaport = new OpenSeaPort(provider, {
 });
 
 const Mynftcard = ({ nft }) => {
- /* const [type, Settype] = useState("");*/
   const alert = useAlert();
 
   const [days, setDays] = useState("0");
@@ -48,6 +47,9 @@ const Mynftcard = ({ nft }) => {
         endAmount: price,
         expirationTime: expirationms,
       });
+      if (listing) {
+        alert.success("NFT successfully Listed");
+      }
 
       console.log(listing);
       await provider.disconnect();
@@ -59,19 +61,16 @@ const Mynftcard = ({ nft }) => {
       window.location.reload();
     }
   };
-/*
-  const getIpfsdata = async () => {
-    const data = await axios.get(`${nft.token_metadata}`);
-    Settype(data.data.type);
-  };
 
-  useEffect(() => {
-    getIpfsdata(); //eslint-disable-next-line
-  }, []);*/
+  const [days, setDays] = useState("0");
+  const [price, setPrice] = useState("0.00");
 
   return (
     <div>
-      <div className="cards_items" style={{ width: "250px",maxHeight:"400px" }}>
+      <div
+        className="cards_items"
+        style={{ width: "250px", maxHeight: "400px" }}
+      >
         <embed
           type={nft.type}
           src={nft.image_url}
@@ -86,7 +85,7 @@ const Mynftcard = ({ nft }) => {
 
         <div className="desc">
           <div className="titles" style={{ flex:"80%" }}>
-            <div className="name" style={{ color: "white" }}>
+            <div className="name" style={{ color: "white",fontWeight: "700" }}>
               {nft.name}
             </div>
             <div className="code" style={{ color: "white" }}>
@@ -102,9 +101,9 @@ const Mynftcard = ({ nft }) => {
               fontWeight: "700",
               display: "flex",
               fontSize: "14px",
-              marginTop:"30px",
+              marginTop: "30px",
               justifyContent: "center",
-              marginBottom:"40px",
+              marginBottom: "40px",
             }}
           >
             Already Listed at Price{" "}
@@ -116,7 +115,14 @@ const Mynftcard = ({ nft }) => {
             trigger={
               <button
                 className="button"
-                style={{ marginLeft: "15%",marginBottom:"25px",marginTop:"20px", width: "60%",borderRadius:"10px",backgroundColor:"orange"  }}
+                style={{
+                  marginLeft: "15%",
+                  marginBottom: "25px",
+                  marginTop: "20px",
+                  width: "60%",
+                  borderRadius: "10px",
+                  backgroundColor: "orange",
+                }}
               >
                 {" "}
                 Sell Asset
@@ -157,7 +163,11 @@ const Mynftcard = ({ nft }) => {
                 type="submit"
                 onClick={Sell}
                 value="Sell"
-                style={{ marginLeft: "30%", width: "40%",borderRadius:"10px" }}
+                style={{
+                  marginLeft: "30%",
+                  width: "40%",
+                  borderRadius: "10px",
+                }}
               />
             </form>{" "}
             )

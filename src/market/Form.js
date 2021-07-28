@@ -20,15 +20,11 @@ const Form = () => {
   console.log(NFT);
 
   const [selectedFile, setSelectedFile] = useState("");
-  const [filetype, setFiletype] = useState("");
+
   const CaptureFile = (event) => {
     event.preventDefault();
     const file = event.target.files[0];
     console.log(file);
-
-    //if (file.type.includes("image")) setNFT({ ...NFT, type: "image" });
-    //else setNFT({ ...NFT, type: "video" });
-
     let reader = new window.FileReader();
     reader.readAsArrayBuffer(file);
     setSelectedFile(file);
@@ -38,7 +34,6 @@ const Form = () => {
     event.preventDefault();
     const ipfsHash = await ipfs.add(selectedFile);
     console.log(ipfsHash.path);
-    console.log(filetype);
     setNFT({
       ...NFT,
       image_url: `https://ipfs.io/ipfs/${ipfsHash.path}`,
@@ -46,7 +41,6 @@ const Form = () => {
   };
 
   const submitForm = async () => {
-    console.log(filetype);
     console.log(NFT);
     try {
       const finalHash = await ipfs.add(JSON.stringify(NFT));
@@ -75,24 +69,25 @@ const Form = () => {
           name="name"
           style={{ fontSize: "12px" }}
           onChange={(e) => setNFT({ ...NFT, name: e.target.value })}
-          //required
+          required
         />
         <label style={{ color: "black", fontWeight: "700", fontSize: "18px" }}>
           Upload Your NFT Data
         </label>
         <div className="custom-file-upload">
-          <input type="file" onChange={CaptureFile} />{" "}
+          <input type="file" onChange={CaptureFile} required />{" "}
         </div>
         <label style={{ color: "black", fontWeight: "700", fontSize: "18px" }}>
           Description of NFT
         </label>
         <input
           type="text"
+          maxLength="60"
           value={NFT.description}
           name="description"
           style={{ fontSize: "13px" }}
           onChange={(e) => setNFT({ ...NFT, description: e.target.value })}
-          //required
+          required
         />
 
         <label style={{ color: "black", fontWeight: "700", fontSize: "18px" }}>
