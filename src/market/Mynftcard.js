@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import Web3 from "web3";
-import axios from "axios";
 import "./Card.css";
 import Popup from "reactjs-popup";
 import { useAlert } from "react-alert";
@@ -23,20 +22,21 @@ const Mynftcard = ({ nft }) => {
  /* const [type, Settype] = useState("");*/
   const alert = useAlert();
 
+  const [days, setDays] = useState("0");
+  const [price, setPrice] = useState("0.00");
   console.log(nft);
-
   const Sell = async (event) => {
+    const expirationms = Math.round(Date.now() + 1000 * 60 * 60 * (24 * parseInt(days)));
+    
     event.preventDefault();
+    var d = new Date(expirationms);
+    d.toString();
     console.log("sell", days, price);
-
+    console.log(d);
     try {
       await provider.enable();
       const web3 = new Web3(provider);
       const accountAddress = await web3.eth.getAccounts();
-
-      const expirationTime = Math.round(
-        Date.now() / 1000 + 60 * 60 * (24 * parseInt(days))
-      );
 
       const listing = await seaport.createSellOrder({
         asset: {
@@ -46,7 +46,7 @@ const Mynftcard = ({ nft }) => {
         accountAddress: accountAddress[0],
         startAmount: price,
         endAmount: price,
-        expirationTime,
+        expirationTime: expirationms,
       });
 
       console.log(listing);
@@ -69,8 +69,6 @@ const Mynftcard = ({ nft }) => {
     getIpfsdata(); //eslint-disable-next-line
   }, []);*/
 
-  const [days, setDays] = useState("0");
-  const [price, setPrice] = useState("0.00");
   return (
     <div>
       <div className="cards_items" style={{ width: "250px",maxHeight:"400px" }}>

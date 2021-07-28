@@ -21,7 +21,41 @@ const seaport = new OpenSeaPort(provider, {
 const Card = ({ nft }) => {
   /* const [type, Settype] = useState("");*/
   const alert = useAlert();
-
+  const datewegot = nft.sell_orders[0].closing_date;
+  let year = parseInt(datewegot.slice(0, 4));
+  let month = parseInt(datewegot.slice(5, 7));
+  let date = parseInt(datewegot.slice(8, 10));
+  let hour = parseInt(datewegot.slice(11, 13));
+  let min = parseInt(datewegot.slice(14, 16));
+  min = min + 30;
+  if (min >= 60) {
+    min-= 60;
+    hour += 6;
+  }
+  else {
+    hour += 5;
+  }
+  if (hour >= 24) {
+    hour -= 24;
+    date += 1;
+    if (month == 2 && date > 28) {
+      month += 1;
+      date = 1;
+    }
+    else if ((month == 4 || month == 6 || month == 9 || month == 11) && date > 30) {
+      month += 1;
+      date = 1;
+    }
+    else if(month!=12&&date>31) {
+      month += 1;
+      date = 1;
+    }
+    else if (month == 12 && date > 31) {
+      year += 1;
+      month = 1;
+      date = 1;
+    }
+  }
   const Purchase = async (event) => {
     event.preventDefault();
     try {
@@ -80,7 +114,7 @@ const Card = ({ nft }) => {
       />
       <div className="desc">
         <div className="titles">
-          <div className="name" style={{ color: "white" }}>
+          <div className="name" style={{ color: "white",fontWeight:"700" }}>
             {nft.name}
           </div>
           <div className="code" style={{ color: "white" }}>
@@ -88,7 +122,7 @@ const Card = ({ nft }) => {
           </div>
         </div>
       <div className="price">
-        <div className="pn" style={{ color: "white" }}>
+        <div className="pn" style={{ color: "white",fontWeight:"700" }}>
           Price
         </div>
         <div className="pval" style={{ color: "white" }}>
@@ -105,6 +139,7 @@ const Card = ({ nft }) => {
         onClick={Purchase}
         style={{ marginLeft: "25%", width: "50%", borderRadius: "12px",backgroundColor:"green" }}
       />
+      <div><h3 style={{ margin:"0",textAlign: "center", fontSize: "14px", color: "white" }}>Expires At: {date + "-" + month + "-" + year + " " + hour + ":" + min}</h3></div>
     </div>
   );
 };
