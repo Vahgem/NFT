@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./form.css";
 import web3 from "../Ethereum/web3";
 import nft from "../Ethereum/nft";
+require("dotenv").config();
 
 const { create } = require("ipfs-http-client");
 const ipfs = create({
@@ -53,6 +54,7 @@ const Form = () => {
       console.log(e);
     }
   };
+
   useEffect(() => {
     if (NFT.image_url.length > 0) submitForm(); //eslint-disable-next-line
   }, [NFT.image_url]);
