@@ -45,7 +45,7 @@ const Mynftcard = ({ nft }) => {
       const listing = await seaport.createSellOrder({
         asset: {
           tokenId: nft.token_id,
-          tokenAddress: process.env.TOKEN_ADDRESS,
+          tokenAddress: process.env.REACT_APP_TOKEN_ADDRESS,
         },
         accountAddress: accountAddress[0],
         startAmount: price,
@@ -55,7 +55,6 @@ const Mynftcard = ({ nft }) => {
       if (listing) {
         alert.success("NFT successfully Listed");
       }
-
       console.log(listing);
       await provider.disconnect();
     } catch (e) {

@@ -1,6 +1,6 @@
 import web3 from "./web3";
 
-const address = process.env.TOKEN_ADDRESS;
+const address = process.env.REACT_APP_TOKEN_ADDRESS;
 //0xB6532f3a7CCB26c119D6f3fAccaF6Dd5bf4B5ff2
 const abi = [
   {

@@ -64,7 +64,7 @@ const Card = ({ nft }) => {
       const web3 = new Web3(provider);
 
       const orders1 = await seaport.api.getOrders({
-        asset_contract_address: process.env.TOKEN_ADDRESS,
+        asset_contract_address: process.env.REACT_APP_TOKEN_ADDRESS,
         token_id: nft.token_id,
         side: OrderSide.Sell,
       });
@@ -73,7 +73,7 @@ const Card = ({ nft }) => {
       const accounts = await web3.eth.getAccounts();
       const accountAddress = accounts[0];
       console.log("2", orders, accountAddress, orders1);
-      const referrerAddress = process.env.REFERRER_ADDRESS;
+      const referrerAddress = process.env.REACT_APP_REFERRER_ADDRESS;
 
       const response = await seaport.fulfillOrder({
         order: orders,
