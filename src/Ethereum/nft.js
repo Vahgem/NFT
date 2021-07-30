@@ -1,6 +1,6 @@
 import web3 from "./web3";
 
-const address = "0x4c79E9008cF09C908C051008EA258580875f41A3";
+const address = process.env.TOKEN_ADDRESS;
 //0xB6532f3a7CCB26c119D6f3fAccaF6Dd5bf4B5ff2
 const abi = [
   {

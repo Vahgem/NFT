@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import Web3 from "web3";
+import axios from "axios";
 import "./Card.css";
 import Popup from "reactjs-popup";
 import { useAlert } from "react-alert";
 
 const opensea = require("opensea-js");
-
+const id = "3610b5ef9a864d4dbd6ec3fc0e186935";
 const provider = new WalletConnectProvider({
-  infuraId: "3610b5ef9a864d4dbd6ec3fc0e186935",
+  infuraId: id,
   qrcode: true,
 });
 const OpenSeaPort = opensea.OpenSeaPort;
@@ -20,9 +21,10 @@ const seaport = new OpenSeaPort(provider, {
 
 const Mynftcard = ({ nft }) => {
   const alert = useAlert();
-
+  const [type, Settype] = useState("");
   const [days, setDays] = useState("0");
   const [price, setPrice] = useState("0.00");
+
   console.log(nft);
   const Sell = async (event) => {
     const expirationms = Math.round(
@@ -42,7 +44,7 @@ const Mynftcard = ({ nft }) => {
       const listing = await seaport.createSellOrder({
         asset: {
           tokenId: nft.token_id,
-          tokenAddress: "0x4c79E9008cF09C908C051008EA258580875f41A3",
+          tokenAddress: process.env.TOKEN_ADDRESS,
         },
         accountAddress: accountAddress[0],
         startAmount: price,
@@ -64,19 +66,43 @@ const Mynftcard = ({ nft }) => {
     }
   };
 
+  const getIpfsData = async () => {
+    const response = await axios.get(`${nft.token_metadata}`);
+    Settype(response.data.type);
+  };
+  useEffect(() => {
+    getIpfsData(); //eslint-disable-next-line
+  }, [type]);
+
+  console.log(type);
   return (
-    <div className="cards_items" style={{ width: "300px", maxHeight: "auto" }}>
-      <embed
-        type={nft.type}
-        src={nft.image_url}
-        alt={nft.name}
-        style={{
-          objectFit: "contain",
-          overflow: "hidden !important",
-          width: "100%",
-          height: "200px",
-        }}
-      />
+    <div
+      className="cards_items"
+      style={{ maxWidth: "300px", maxHeight: "auto" }}
+    >
+      {type === "image/jpg" ? (
+        <img
+          src={nft.image_url}
+          alt={nft.name}
+          style={{
+            objectFit: "contain",
+            overflow: "hidden !important",
+            width: "100%",
+            height: "200px",
+          }}
+        />
+      ) : (
+        <embed
+          src={nft.image_url}
+          alt={nft.name}
+          style={{
+            objectFit: "contain",
+            overflow: "hidden !important",
+            width: "100%",
+            height: "200px",
+          }}
+        />
+      )}
 
       <div className="desc">
         <div className="titles">
