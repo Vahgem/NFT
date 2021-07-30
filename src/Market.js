@@ -15,7 +15,7 @@ function Market() {
           style={{
             fontSize: "15px",
             fontWeight: "700",
-            opacity:"1"
+            opacity: "1",
           }}
         >
           <a className="mobile-btn" href="#nav-wrap" title="Show navigation">

@@ -6,9 +6,7 @@ if (typeof window !== "undefined" && typeof window.web3 !== "undefined") {
   //in the browser and metamask running
   web3 = new Web3(window.web3.currentProvider);
 } else {
-  const provider = new Web3.providers.HttpProvider(
-    "https://rinkeby.infura.io/v3/3610b5ef9a864d4dbd6ec3fc0e186935"
-  );
+  const provider = new Web3.providers.HttpProvider(process.env.INFURA_URL);
   web3 = new Web3(provider);
 }
 

@@ -15,7 +15,7 @@ const Form = () => {
     name: "",
     image_url: "",
     description: "",
-    type: "image",
+    type: "image/jpg",
   });
   console.log(NFT);
 
@@ -82,7 +82,7 @@ const Form = () => {
         </label>
         <input
           type="text"
-          maxLength="60"
+          maxLength="80"
           value={NFT.description}
           name="description"
           style={{ fontSize: "13px" }}
@@ -98,8 +98,8 @@ const Form = () => {
           value={NFT.type}
           onChange={(e) => setNFT({ ...NFT, type: e.target.value })}
         >
-          <option value="image">Image/Gifs</option>
-          <option value="video">Video</option>
+          <option value="image/jpg">Image/Gifs</option>
+          <option value="video/webm">Video</option>
         </select>
         <br />
         <button

@@ -6,8 +6,6 @@ import { connect } from "react-redux";
 import { setcurrentuser } from "../redux/user/user-actions";
 import { useAlert } from "react-alert";
 
-
-
 const project = "./market";
 
 const description =
@@ -27,9 +25,9 @@ const Header = ({ setcurrentuser, accountAddress }) => {
     if (ethId !== 4) {
       alert.show("Select Rinkeby Network");
     } else if (accounts[0] !== accountAddress) {
-      setcurrentuser({ accountAddress: accounts[0], ethId }); 
+      setcurrentuser({ accountAddress: accounts[0], ethId });
       alert.success("Wallet Connected");
-     }
+    }
     console.log(accounts, ethId);
   };
   // useEffect(() => {
@@ -37,7 +35,7 @@ const Header = ({ setcurrentuser, accountAddress }) => {
   // }, []);
   return (
     <header id="home">
-      <ParticlesBg type="circle" bg={true}  />
+      <ParticlesBg type="circle" bg={true} />
 
       <nav
         id="nav-wrap"
@@ -114,7 +112,11 @@ const Header = ({ setcurrentuser, accountAddress }) => {
           <hr style={{ border: "1px solid white" }} />
           <Fade bottom duration={2000}>
             <ul className="social">
-              <a href={project} className="button btn project-btn">
+              <a
+                href={project}
+                className="button btn project-btn"
+                style={{ marginLeft: "5rem" }}
+              >
                 <i className="fa fa-book"></i>MarketPlace
               </a>
             </ul>

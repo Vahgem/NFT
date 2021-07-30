@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Card.css";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import Web3 from "web3";
 import { OrderSide } from "opensea-js/lib/types";
 
 import { useAlert } from "react-alert";
+import axios from "axios";
 
 const opensea = require("opensea-js");
-
 const provider = new WalletConnectProvider({
   infuraId: "3610b5ef9a864d4dbd6ec3fc0e186935",
   qrcode: true,
@@ -20,6 +20,8 @@ const seaport = new OpenSeaPort(provider, {
 });
 const Card = ({ nft }) => {
   const alert = useAlert();
+  const [type, Settype] = useState("");
+
   const datewegot = nft.sell_orders[0].closing_date;
   let year = parseInt(datewegot.slice(0, 4));
   let month = parseInt(datewegot.slice(5, 7));
@@ -54,6 +56,7 @@ const Card = ({ nft }) => {
       date = 1;
     }
   }
+
   const Purchase = async (event) => {
     event.preventDefault();
     try {
@@ -61,7 +64,7 @@ const Card = ({ nft }) => {
       const web3 = new Web3(provider);
 
       const orders1 = await seaport.api.getOrders({
-        asset_contract_address: "0x4c79E9008cF09C908C051008EA258580875f41A3",
+        asset_contract_address: process.env.TOKEN_ADDRESS,
         token_id: nft.token_id,
         side: OrderSide.Sell,
       });
@@ -70,7 +73,7 @@ const Card = ({ nft }) => {
       const accounts = await web3.eth.getAccounts();
       const accountAddress = accounts[0];
       console.log("2", orders, accountAddress, orders1);
-      const referrerAddress = "0xd32598dE51B64BBF0ABA45A34a58C2d365266Eb8";
+      const referrerAddress = process.env.REFERRER_ADDRESS;
 
       const response = await seaport.fulfillOrder({
         order: orders,
@@ -94,18 +97,42 @@ const Card = ({ nft }) => {
     }
   };
 
+  const getIpfsData = async () => {
+    const response = await axios.get(`${nft.token_metadata}`);
+    Settype(response.data.type);
+  };
+  useEffect(() => {
+    getIpfsData(); //eslint-disable-next-line
+  }, []);
+
   return (
-    <div className="cards_items" style={{ width: "300px", maxHeight: "auto" }}>
-      <embed
-        type={nft.type}
-        src={nft.image_url}
-        style={{
-          objectFit: "contain",
-          overflow: "hidden",
-          width: "100%",
-          height: "200px",
-        }}
-      />
+    <div
+      className="cards_items"
+      style={{ maxWidth: "300px", maxHeight: "auto" }}
+    >
+      {type === "image/jpg" ? (
+        <img
+          src={nft.image_url}
+          alt={nft.name}
+          style={{
+            objectFit: "contain",
+            overflow: "hidden !important",
+            width: "100%",
+            height: "200px",
+          }}
+        />
+      ) : (
+        <embed
+          src={nft.image_url}
+          alt={nft.name}
+          style={{
+            objectFit: "contain",
+            overflow: "hidden !important",
+            width: "100%",
+            height: "200px",
+          }}
+        />
+      )}
       <div className="desc">
         <div className="titles">
           <div
