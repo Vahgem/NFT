@@ -9,7 +9,6 @@ import { useAlert } from "react-alert";
 
 
 const project = "./market";
-const github = "https://github.com/Vahgem/Homepage";
 
 const description =
   "The relationship between Bollywood and cricket goes a long way, celebs form both the industries have made headlines together. Many movies have been made about the sport and biopics on legendary stars are also in the pipeline.";
@@ -117,9 +116,6 @@ const Header = ({ setcurrentuser, accountAddress }) => {
             <ul className="social">
               <a href={project} className="button btn project-btn">
                 <i className="fa fa-book"></i>MarketPlace
-              </a>
-              <a href={github} className="button btn github-btn">
-                <i className="fa fa-github"></i>Github
               </a>
             </ul>
           </Fade>

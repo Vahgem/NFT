@@ -2,7 +2,7 @@
   "name": "homepage",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://vahgem.github.io/Homepage",
+  "homepage": ".",
   "dependencies": {
     "@material-ui/core": "^4.12.1",
     "@testing-library/jest-dom": "^5.11.4",
@@ -15,7 +15,6 @@
     "bootstrap": "^4.1.3",
     "image-url-validator": "^1.0.4",
     "ipfs-http-client": "^50.1.2",
-    "is-image-url": "^1.1.8",
     "jquery": "^3.6.0",
     "moment": "^2.22.2",
     "opensea-js": "latest",
