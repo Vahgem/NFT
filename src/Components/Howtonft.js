@@ -7,6 +7,7 @@ export default function Howtonft() {
       className="HowtoAll"
       style={{
         // background: "rgba(252,255,0,0.3)",
+        width:"100%",
         padding: "20px",
         paddingTop: "6rem",
         fontFamily: "Georgia, serif",

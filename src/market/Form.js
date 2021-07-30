@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./form.css";
 import web3 from "../Ethereum/web3";
 import nft from "../Ethereum/nft";
+import Popup from "reactjs-popup";
 require("dotenv").config();
 
 const { create } = require("ipfs-http-client");
@@ -18,6 +19,7 @@ const Form = () => {
     description: "",
     type: "image/jpg",
   });
+  const [isOpen, setIsOpen] = useState(false);
   console.log(NFT);
 
   const [selectedFile, setSelectedFile] = useState("");
@@ -32,6 +34,7 @@ const Form = () => {
   };
 
   const setNFTimage = async (event) => {
+    setIsOpen(false);
     event.preventDefault();
     const ipfsHash = await ipfs.add(selectedFile);
     console.log(ipfsHash.path);
@@ -42,6 +45,7 @@ const Form = () => {
   };
 
   const submitForm = async () => {
+    setIsOpen(false);
     console.log(NFT);
     try {
       const finalHash = await ipfs.add(JSON.stringify(NFT));
@@ -60,9 +64,13 @@ const Form = () => {
   }, [NFT.image_url]);
 
   return (
+    <Popup trigger={<button
+      onClick={() => setIsOpen(true)}
+      open={isOpen}
+      className="button"> Create Your NFT </button>} modal>
     <div>
       <form className="Form">
-        <label style={{ color: "black", fontWeight: "700", fontSize: "18px" }}>
+        <label style={{ color: "white", fontWeight: "700", fontSize: "18px" }}>
           NFT Name
         </label>
         <input
@@ -73,13 +81,13 @@ const Form = () => {
           onChange={(e) => setNFT({ ...NFT, name: e.target.value })}
           required
         />
-        <label style={{ color: "black", fontWeight: "700", fontSize: "18px" }}>
+        <label style={{ color: "white", fontWeight: "700", fontSize: "18px" }}>
           Upload Your NFT Data
         </label>
         <div className="custom-file-upload">
           <input type="file" onChange={CaptureFile} required />{" "}
         </div>
-        <label style={{ color: "black", fontWeight: "700", fontSize: "18px" }}>
+        <label style={{ color: "white", fontWeight: "700", fontSize: "18px" }}>
           Description of NFT
         </label>
         <input
@@ -92,7 +100,7 @@ const Form = () => {
           required
         />
 
-        <label style={{ color: "black", fontWeight: "700", fontSize: "18px" }}>
+        <label style={{ color: "white", fontWeight: "700", fontSize: "18px" }}>
           Select File Type
         </label>
         <select
@@ -111,7 +119,8 @@ const Form = () => {
           Submit
         </button>
       </form>
-    </div>
+      </div>
+      </Popup>
   );
 };
 export default Form;

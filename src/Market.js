@@ -3,7 +3,7 @@ import "./market.css";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import Mynft from "./market/Mynft";
 import "react-tabs/style/react-tabs.css";
-import Popup from "./market/Popup.js";
+import Form from "./market/Form.js";
 import Marketplace from "./market/Marketplace.js";
 import ParticlesBg from "particles-bg";
 function Market() {
@@ -33,7 +33,7 @@ function Market() {
             </li>
 
             <li>
-              <Popup />
+              <Form />
             </li>
           </ul>
         </nav>

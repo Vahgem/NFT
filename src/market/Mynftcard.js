@@ -21,12 +21,15 @@ const seaport = new OpenSeaPort(provider, {
 
 const Mynftcard = ({ nft }) => {
   const alert = useAlert();
+  
+const [isOpen, setIsOpen] = useState(true);
   const [type, Settype] = useState("");
   const [days, setDays] = useState("0");
   const [price, setPrice] = useState("0.00");
 
   console.log(nft);
   const Sell = async (event) => {
+    setIsOpen(false);
     const expirationms = Math.round(
       Date.now() + 1000 * 60 * 60 * (24 * parseInt(days))
     );
@@ -142,7 +145,9 @@ const Mynftcard = ({ nft }) => {
             <Popup
               trigger={
                 <button
-                  className="button"
+                    className="button"
+                    open={isOpen}
+                    onClick={()=>setIsOpen(true)}
                   style={{
                     marginLeft: "15%",
                     marginBottom: "25px",
@@ -166,7 +171,7 @@ const Mynftcard = ({ nft }) => {
               >
                 <label
                   style={{
-                    color: "black",
+                    color: "white",
                     fontWeight: "700",
                     fontSize: "18px",
                   }}
@@ -181,7 +186,7 @@ const Mynftcard = ({ nft }) => {
                 />
                 <label
                   style={{
-                    color: "black",
+                    color: "white",
                     fontWeight: "700",
                     fontSize: "18px",
                   }}

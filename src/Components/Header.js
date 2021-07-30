@@ -19,7 +19,10 @@ const Header = ({ setcurrentuser, accountAddress }) => {
       await window.ethereum.enable();
       setCurr("connect");
     }
-
+    var mobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
+    if (mobile) {
+      alert.error("Please use Desktop mode on mobile");
+    }
     const accounts = await web3.eth.getAccounts();
     const ethId = await web3.eth.net.getId();
     if (ethId !== 4) {

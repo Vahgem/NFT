@@ -14,7 +14,7 @@ class Contact extends Component {
     const message = this.props.data.contactmessage;
 
     return (
-      <section id="contact">
+      <section id="contact" style={{width:"100%",}}>
         <Fade bottom duration={1000}>
           <div className="row section-head">
             <div className="two columns header-col">

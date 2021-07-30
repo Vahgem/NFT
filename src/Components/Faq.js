@@ -122,7 +122,7 @@ const style = {
 };
 export default function Faqs() {
   return (
-    <section id="faq">
+    <section id="faq" style={{width:"100vw",}}>
       <Faq data={data} styles={style} config={config} />
     </section>
   );
