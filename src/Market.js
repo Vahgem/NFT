@@ -27,7 +27,7 @@ function Market() {
 
           <ul id="nav" className="nav">
             <li>
-              <a className="smoothscroll" href="./">
+              <a href="./">
                 Home
               </a>
             </li>

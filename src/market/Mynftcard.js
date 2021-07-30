@@ -34,6 +34,7 @@ const Mynftcard = ({ nft }) => {
     d.toString();
     console.log("sell", days, price);
     console.log(d);
+    console.log(nft.type);
     try {
       await provider.enable();
       const web3 = new Web3(provider);
@@ -63,11 +64,11 @@ const Mynftcard = ({ nft }) => {
       window.location.reload();
     }
   };
-
+  console.log(nft.type);
   return (
-    <div className="cards_items" style={{ width: "300px", maxHeight: "auto" }}>
+    <div className="cards_items" style={{ maxWidth: "23%", maxHeight: "auto" }}>
       <embed
-        type={nft.type}
+        type={nft.type==="video/webm"?"video/webm":"image/jpg"}
         src={nft.image_url}
         alt={nft.name}
         style={{
