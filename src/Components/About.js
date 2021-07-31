@@ -31,7 +31,7 @@ class About extends Component {
               <p>{bio}</p>
               <div
                 className="columns contact-details"
-                style={{ marginLeft: "50%" }}
+                style={{ marginLeft: "30%" }}
               >
                 <h2>Contact Details</h2>
                 <p className="address">
