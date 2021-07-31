@@ -6,12 +6,12 @@ class About extends Component {
     //const name = this.props.data.name;
     const bio =
       "We are a young company who wants to promote and build a platform to encourge the trade of NFTs of cricket and films. We recognise that these two things are really important and we would love to own these moments. And since these moments will have limited copies they become rather valuable.";
-    const street = "MLK street";
-    const city = "Houston";
-    const state = "Texas";
-    const zip = "545212";
-    const phone = "011991911";
-    const email = "birthvenue@gmail.com";
+    const street = "Faridabad";
+    const city = "Haryana";
+    const state = "India";
+    const zip = "121006";
+    const phone = "+917015571891";
+    const email = "admin@Birthvenue.in";
     //const resumeDownload = this.props.data.resumedownload;
 
     return (
@@ -31,7 +31,7 @@ class About extends Component {
               <p>{bio}</p>
               <div
                 className="columns contact-details"
-                style={{ marginLeft: "13em" }}
+                style={{ marginLeft: "50%" }}
               >
                 <h2>Contact Details</h2>
                 <p className="address">
